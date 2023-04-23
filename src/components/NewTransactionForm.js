@@ -3,7 +3,7 @@ import { useState } from "react"
 function NewTransactionForm({ categories, onTransactionSubmit}) {
     const [date, setDate] = useState("")
     const [category, setCategory] = useState("")
-    const [amount, setAmount] = useState("code")
+    const [amount, setAmount] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -12,17 +12,17 @@ function NewTransactionForm({ categories, onTransactionSubmit}) {
             category: category,
             amount: amount,
         }
-        onTransactionSubmit(newTransaction)
+        onTransactionSubmit([newTransaction])
         setDate("")
-        setCategory("code")
-        setAmount(0)
+        setCategory("")
+        setAmount("")
     }
 
     return (
         <form className="new-transaction-form" onSubmit={handleSubmit}>
             <label>
                 Date
-                <input type="date" name="text" value={transaction} onChange={(e) => setTransaction(e.target.value)} /> 
+                <input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} /> 
             </label>
             <label>
                 Description
@@ -36,7 +36,7 @@ function NewTransactionForm({ categories, onTransactionSubmit}) {
             </label>
             <label>
                 Amount
-                <input type="number" value={transaction.amount} onChange={(e) => setTransaction(e.target.value)} />
+                <input type="number" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
             </label>
             <input type="submit" value="Add Transaction" />
         </form>
