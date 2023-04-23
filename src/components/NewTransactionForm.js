@@ -1,18 +1,21 @@
 import { useState } from "react"
 
 function NewTransactionForm({ categories, onTransactionSubmit}) {
-    const [transaction, setTransaction] = useState("")
-    const [category, setCategory] = useState("code")
+    const [date, setDate] = useState("")
+    const [category, setCategory] = useState("")
+    const [amount, setAmount] = useState("code")
 
     function handleSubmit(e) {
         e.preventDefault()
         const newTransaction = {
-            date: transaction,
+            date: date,
             category: category,
+            amount: amount,
         }
         onTransactionSubmit(newTransaction)
-        setTransaction("")
+        setDate("")
         setCategory("code")
+        setAmount(0)
     }
 
     return (
@@ -30,6 +33,10 @@ function NewTransactionForm({ categories, onTransactionSubmit}) {
                         </option>
                     ))}
                 </select>
+            </label>
+            <label>
+                Amount
+                <input type="number" value={transaction.amount} onChange={(e) => setTransaction(e.target.value)} />
             </label>
             <input type="submit" value="Add Transaction" />
         </form>
