@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-function Transaction() {
-    const [transactions, setTransactions] = useState([])
+function Transaction({}) {
+    const [transactionList, setTransactionList] = useState([])
     
     useEffect(() => {
         fetch("http://localhost:3000/transactions")
         .then((res) => res.json())
-        .then((data) => setTransactions(data))
+        .then((data) => setTransactionList(data))
         .catch((error) => console.log(error))
     }, [])
 
@@ -22,7 +22,7 @@ function Transaction() {
                     </tr>
                 </thead>
                 <tbody>
-                    {transactions.map(transaction => (
+                    {transactionList.map(transaction => (
                         <tr key={transaction.id}>
                             <td>{transaction.date}</td>
                             <td>{transaction.description}</td>
