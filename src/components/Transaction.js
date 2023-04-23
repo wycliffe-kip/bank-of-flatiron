@@ -12,7 +12,7 @@ function Transaction() {
 
     return (
         <div>
-            <h2>Transactions</h2>
+            <h2> Transactions </h2>
             <table>
                 <thead>
                     <tr>
