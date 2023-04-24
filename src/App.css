@@ -16,7 +16,7 @@ th,
 td {
   text-align: left;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #b2e4d3;
   width: 25%;
 }
 
@@ -34,8 +34,24 @@ button {
 }
 
 input {
-  color: #064419;
+  color: #1bc23f;
   height: 2rem;
   margin-right: 5px;
   border-radius: 5px;
+}
+
+h1, h2 {
+  color: #1bc23f;
+}
+
+label {
+  color: #1bc23f;
+  padding: 1rem;
+}
+
+th {
+  color: #1bc23f;
+}
+td {
+  color: #000;
 }
