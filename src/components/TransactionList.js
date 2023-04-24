@@ -1,14 +1,13 @@
-import React from "react";
-import Transaction from "./Transaction";
+import React from "react"
+import TransactionCard from "./TransactionCard"
 
-function TransactionList ( {transactions, onDelete} ) {
+function TransactionList({transactionSearch}) {
     return (
-        <div className="transactions">
-            {transactions.map((transaction) => (
-                <Transaction key={transaction.text} onDelete={onDelete} />
-            ))}
-
-        </div>
+        <ul>{transactionSearch.map((transaction) => {
+                return <TransactionCard key={transaction.id} transaction={transaction} />
+            }
+        )}
+        </ul>
     )
 }
 export default TransactionList

@@ -1,46 +1,47 @@
-import { useState } from "react"
+import React, {useState} from "react";
 
-function NewTransactionForm({ categories, onTransactionSubmit}) {
-    const [date, setDate] = useState("")
-    const [category, setCategory] = useState("")
-    const [amount, setAmount] = useState("")
+function NewTransactionForm({addTransaction}) {
+    const [fetchedData, setFetchedData] = useState({
+        date: "",
+        description: "",
+        amount: 0,
+    })
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        const newTransaction = {
-            date: date,
-            category: category,
-            amount: amount,
-        }
-        onTransactionSubmit([newTransaction])
-        setDate("")
-        setCategory("")
-        setAmount("")
+    function onSubmit (e) {
+        e.preventDefault() 
+        fetch("http://localhost:3000/transactions", {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(fetchedData)
+        })
+        .then(res => res.json())
+        .then((newTransaction) => {
+            addTransaction(newTransaction)
+            console.log(fetchedData)
+            setFetchedData({date: "",
+            description: "",
+            amount: 0,
+        })
+        })
+    }
+
+    function handleChange (e) {
+        setFetchedData({...fetchedData, [e.target.date] : e.target.value})
     }
 
     return (
-        <form className="new-transaction-form" onSubmit={handleSubmit}>
-            <label>
-                Date
-                <input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} /> 
-            </label>
-            <label>
-                Description
-                <select name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    {categories.map((category) => (
-                        <option key={category} value={category}>
-                            {category}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <label>
-                Amount
-                <input type="number" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
-            </label>
-            <input type="submit" value="Add Transaction" />
-        </form>
+        <div className="new-transaction-form">
+            <h2>Add Transaction</h2>
+            <form onSubmit={onSubmit}>
+                <input type="date" name="date" value={fetchedData.date} onChange={handleChange} />
+                <input type="text" name="description" placeholder="description" value={fetchedData.description} onChange={handleChange} />
+                <input type="number" name="amount" placeholder="amount" value={fetchedData.amout} onChange={handleChange} />
+                <button type="submit">Add Transaction</button>
+                
+            </form>
+        </div>
     )
-
 }
 export default NewTransactionForm

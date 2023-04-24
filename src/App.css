@@ -6,4 +6,22 @@
   border: #302834;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+th, 
+td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+form {
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+}
 
