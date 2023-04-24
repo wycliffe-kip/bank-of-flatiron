@@ -22,6 +22,7 @@ function NewTransactionForm({addTransaction}) {
             console.log(fetchedData)
             setFetchedData({date: "",
             description: "",
+            category: "",
             amount: 0,
         })
         })
@@ -35,9 +36,9 @@ function NewTransactionForm({addTransaction}) {
         <div className="new-transaction-form">
             <h2>Add Transaction</h2>
             <form onSubmit={onSubmit}>
-                <input type="date" name="date" value={fetchedData.date} onChange={handleChange} />
+                <input type="date" date="date" value={fetchedData.date} onChange={handleChange} />
                 <input type="text" name="description" placeholder="description" value={fetchedData.description} onChange={handleChange} />
-                <input type="number" name="amount" placeholder="amount" value={fetchedData.amout} onChange={handleChange} />
+                <input type="number" name="amount" placeholder="amount" value={fetchedData.amount} onChange={handleChange} />
                 <button type="submit">Add Transaction</button>
                 
             </form>
