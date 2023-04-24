@@ -73,4 +73,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Data is fetched from db.json using GET requiest in the TransactionPage component. Fetched is placed within useEffect and data is fetched only once thus no inclusion of dependency. Thus, when the application is started using npm start, all transactions are rendered.
 
-In the TransactionPage, useState is constructed and set to an empty array so that the data that is returned after fetch request can be passed down to the children. 
+In the TransactionPage, useState is constructed and set to an empty array so that the data that is returned after fetch request can be passed down to the TransactionList component. 
+
+In TransactionList, destructure prop, and map through the transactions where a new array is returned and saved into the TransactionCard component. 
+
+### Form
+Create a submit form that will add a new transaction to be rendered into DOM, shift to TransactionPage: a child of NewTransactionForm component and create addTransaction function that passes prop to the TransactionPage.
