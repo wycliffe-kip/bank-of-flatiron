@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Deliverables
+
+Data is fetched from db.json using GET requiest in the TransactionPage component. Fetched is placed within useEffect and data is fetched only once thus no inclusion of dependency. Thus, when the application is started using npm start, all transactions are rendered.
+
+In the TransactionPage, useState is constructed and set to an empty array so that the data that is returned after fetch request can be passed down to the children. 

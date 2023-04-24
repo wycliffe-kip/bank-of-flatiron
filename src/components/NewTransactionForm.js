@@ -4,8 +4,9 @@ function NewTransactionForm({addTransaction}) {
     const [fetchedData, setFetchedData] = useState({
         date: "",
         description: "",
-        amount: 0,
+        amount: "",
     })
+
 
     function onSubmit (e) {
         e.preventDefault() 
@@ -20,26 +21,51 @@ function NewTransactionForm({addTransaction}) {
         .then((newTransaction) => {
             addTransaction(newTransaction)
             console.log(fetchedData)
-            setFetchedData({date: "",
+            setFetchedData({
+            date: "",
             description: "",
             category: "",
-            amount: 0,
+            amount: "",
         })
         })
     }
 
     function handleChange (e) {
-        setFetchedData({...fetchedData, [e.target.date] : e.target.value})
+        setFetchedData({...fetchedData, [e.target.name] : e.target.value})
     }
 
     return (
         <div className="new-transaction-form">
             <h2>Add Transaction</h2>
             <form onSubmit={onSubmit}>
-                <input type="date" date="date" value={fetchedData.date} onChange={handleChange} />
-                <input type="text" name="description" placeholder="description" value={fetchedData.description} onChange={handleChange} />
-                <input type="number" name="amount" placeholder="amount" value={fetchedData.amount} onChange={handleChange} />
-                <button type="submit">Add Transaction</button>
+                <input 
+                    type="date" 
+                    name="date" 
+                    value={fetchedData.date} 
+                    onChange={handleChange} 
+                />
+                <input 
+                    type="text" 
+                    name="description" 
+                    placeholder="description" 
+                    value={fetchedData.description} 
+                    onChange={handleChange} 
+                />
+                <input
+                    type="text"
+                    name="category"
+                    placeholder="category"
+                    value={fetchedData.category}
+                    onChange={handleChange}
+                />
+                <input 
+                    type="number" 
+                    name="amount" 
+                    placeholder="amount" 
+                    value={fetchedData.amount} 
+                    onChange={handleChange} 
+                />
+                <button type="submit" >Add Transaction</button>
                 
             </form>
         </div>

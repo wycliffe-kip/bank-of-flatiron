@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: #302834;
+  border: #fff;
 }
 
 table {
@@ -17,11 +17,25 @@ td {
   text-align: left;
   padding: 8px;
   border: 1px solid #ddd;
+  width: 25%;
 }
 
 form {
   width: 100%;
   padding: 10px;
-  margin: 5px;
+  margin-right: 5px;
 }
 
+button {
+  border-radius: 1rem;
+  background-color: aqua;
+  padding: 0.5rem;
+  margin-left: 5px;
+}
+
+input {
+  color: #064419;
+  height: 2rem;
+  margin-right: 5px;
+  border-radius: 5px;
+}
