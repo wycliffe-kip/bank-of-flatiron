@@ -4,30 +4,34 @@ import TransactionList from "./TransactionList"
 import Search from "./Search"
 
 function TransactionPage() {
-    const [transactionData, setTransactionData] = useState([])
-    const [search, setSearch] = useState("")
+    const [transactionData, setTransactionData] = useState([]) // State for transaction data
+    const [search, setSearch] = useState("") // State for search string
 
-  useEffect(() => {
-    fetch("http://localhost:3000/transactions")
-    .then(res => res.json())
-    .then((transaction) => setTransactionData(transaction))
-  }, [])
+    // Fetch transaction data from API endpoint using useEffect
+    useEffect(() => {
+        fetch("http://localhost:3000/transactions")
+        .then(res => res.json())
+        .then((transaction) => setTransactionData(transaction))
+    }, [])
 
-  function addTransaction (newTransaction) {
-    setTransactionData([...transactionData, newTransaction])
-  }
+    // Function to add a new transaction to the list
+    function addTransaction (newTransaction) {
+        setTransactionData([...transactionData, newTransaction])
+    }
 
-  const visibleTransactions = transactionData.filter((transaction) => {
-    return transaction.category && transaction.category.toLowerCase().includes(search.toLowerCase())
-  })
+    // Filter the transaction data based on the search string
+    const visibleTransactions = transactionData.filter((transaction) => {
+        return transaction.category && transaction.category.toLowerCase().includes(search.toLowerCase())
+    })
 
-  return (
-    <main>
-        <NewTransactionForm addTransaction={addTransaction} />
-        <Search setSearch={setSearch} search={search}/>
-        <TransactionList transactionSearch={visibleTransactions} />
-    </main>
-  );
+    // Render the page with the new transaction form, search bar, and transaction list
+    return (
+        <main>
+            <NewTransactionForm addTransaction={addTransaction} />
+            <Search setSearch={setSearch} search={search}/>
+            <TransactionList transactionSearch={visibleTransactions} />
+        </main>
+    );
 }
 
 export default TransactionPage;

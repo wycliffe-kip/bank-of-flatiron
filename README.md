@@ -1,3 +1,8 @@
+# Bank of Flatiron
+
+Name: Wycliffe Chepchieng
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -77,5 +82,23 @@ In the TransactionPage, useState is constructed and set to an empty array so tha
 
 In TransactionList, destructure prop, and map through the transactions where a new array is returned and saved into the TransactionCard component. 
 
-### Form
-Create a submit form that will add a new transaction to be rendered into DOM, shift to TransactionPage: a child of NewTransactionForm component and create addTransaction function that passes prop to the TransactionPage.
+### Form 
+This code defines a NewTransactionForm component that allows the user to input data for a new transaction and send it to the API endpoint. Here are some additional comments:
+
+React and useState are imported.
+The NewTransactionForm component receives a addTransaction function as a prop from its parent component.
+useState is used to define state variables for the transaction data (fetchedData).
+onSubmit is a function that sends the new transaction data to the API and adds it to the list of transactions using addTransaction.
+handleChange is a function that updates the fetchedData state variable as the user inputs data.
+The NewTransactionForm component renders a form with inputs for date, description, category, and amount.
+The onSubmit function is called when the user clicks the "Add Transaction" button.
+The NewTransactionForm component is exported as the default export.
+
+
+## TransactionLIst
+This component receives a prop called transactionSearch, which is an array of transactions that match the user's search query. For each transaction in the transactionSearch array, the component renders a TransactionCard component, passing the transaction object as a prop. The key prop is used to uniquely identify each TransactionCard component.
+
+
+## Search
+
+The code defines a Search component that renders an input field for searching transactions by category. The component expects a search prop that represents the current search query, and a setSearch prop that is a callback function used to update the search query. The component renders a label and an input field, with the input's value set to the search prop. Whenever the input field changes, the setSearch function is called with the new value of the input field. The component is then exported so it can be used in other files.

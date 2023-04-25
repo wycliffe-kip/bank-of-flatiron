@@ -97,6 +97,13 @@
       "category": "Food",
       "amount": "3000",
       "id": 14
+    },
+    {
+      "date": "2023-04-24",
+      "description": "Payment",
+      "amount": "3000",
+      "category": "Income",
+      "id": 15
     }
   ]
 }

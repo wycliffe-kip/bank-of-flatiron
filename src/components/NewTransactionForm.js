@@ -4,10 +4,11 @@ function NewTransactionForm({addTransaction}) {
     const [fetchedData, setFetchedData] = useState({
         date: "",
         description: "",
+        category: "",
         amount: "",
     })
 
-
+    // Submit function that sends the new transaction to the API and adds it to the list of transactions
     function onSubmit (e) {
         e.preventDefault() 
         fetch("http://localhost:3000/transactions", {
@@ -30,10 +31,12 @@ function NewTransactionForm({addTransaction}) {
         })
     }
 
+    // Function to update the state when the user inputs data
     function handleChange (e) {
         setFetchedData({...fetchedData, [e.target.name] : e.target.value})
     }
 
+    // Render the form for adding a new transaction
     return (
         <div className="new-transaction-form">
             <h2>Add Transaction</h2>
@@ -66,9 +69,9 @@ function NewTransactionForm({addTransaction}) {
                     onChange={handleChange} 
                 />
                 <button type="submit" >Add Transaction</button>
-                
             </form>
         </div>
     )
 }
-export default NewTransactionForm
+
+export default NewTransactionForm;

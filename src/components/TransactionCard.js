@@ -1,8 +1,13 @@
-import React from "react"
+// Import the React library, which is required to use JSX syntax
+import React from "react";
 
+// Declare the TransactionCard component as a function that takes in a "transaction" prop
 function TransactionCard({transaction}) {
+
+    // Render the component's UI using JSX syntax
     return (
         <div className="table"> 
+        
             <table>
                 <thead>
                     <tr>
@@ -13,6 +18,7 @@ function TransactionCard({transaction}) {
                     </tr>
                 </thead>
                 <tbody>
+                    {/* Use the "key" prop to give each transaction row a unique identifier */}
                     <tr key={transaction.id}>
                         <td>{transaction.date}</td>
                         <td>{transaction.description}</td>
@@ -24,4 +30,6 @@ function TransactionCard({transaction}) {
         </div>
     )
 }
-export default TransactionCard
+
+// Export the TransactionCard component so it can be used in other files
+export default TransactionCard;
